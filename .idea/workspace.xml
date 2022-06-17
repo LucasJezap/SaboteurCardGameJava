@@ -1,7 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70c48675-83f4-4ee1-9198-497f43cc40e4" name="Changes" comment="added all jpg files" />
+    <list default="true" id="70c48675-83f4-4ee1-9198-497f43cc40e4" name="Changes" comment="added all jpg files">
+      <change afterPath="$PROJECT_DIR$/img/action1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action19.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action21.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action22.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action23.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action24.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action25.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action26.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action27.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/action9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold19.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold21.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold22.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold23.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold24.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold25.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold26.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold27.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold28.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/gold9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/misc/CardInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action001.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action002.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action003.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action004.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action005.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action006.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action007.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action008.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action009.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action010.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action011.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action012.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action013.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action014.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action015.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action016.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action017.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action018.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action019.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action020.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action021.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action023.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action024.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action025.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action026.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/action027.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold001.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold002.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold003.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold004.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold005.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold006.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold007.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold008.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold009.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold010.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold011.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold012.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold013.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold014.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold015.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold016.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold017.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold018.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold019.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold020.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold021.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold023.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold024.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold025.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold026.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold027.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gold028.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/tunnel1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/tunnel1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/tunnel2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/tunnel2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/tunnel3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/tunnel3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/tunnel4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/tunnel4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/tunnel5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/tunnel5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/card/ActionCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/ActionCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/card/ActionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/ActionType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/card/BoardCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/BoardCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/card/GoldCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/GoldCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/card/PathCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/PathCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameState.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655489488299</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added all jpg files">
+      <created>1655489723555</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1655489723555</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -103,5 +235,16 @@
     <MESSAGE value="added template + initialization (todo initCards)" />
     <MESSAGE value="added all jpg files" />
     <option name="LAST_COMMIT_MESSAGE" value="added all jpg files" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/misc/CardInfo.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

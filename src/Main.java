@@ -2,13 +2,15 @@ import board.Board;
 import board.Cell;
 import card.ActionCard;
 import card.BoardCard;
-import card.CardType;
+import card.GoldCard;
 import card.PathCard;
 import game.GameController;
 import game.GameState;
+import misc.CardInfo;
 import player.Human;
 import player.Player;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
@@ -19,6 +21,7 @@ public class Main {
     private static final Integer numOfPlayers = 3;
     private static final Integer tunnelCards = 49;
     private static final Integer actionCards = 27;
+    private static final Integer goldCards = 28;
     private static final Map<Integer, Integer> saboteurCount = Map.of(
             3, 1,
             4, 1,
@@ -50,15 +53,16 @@ public class Main {
             10, 4
     );
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("Starting Saboteur...");
 
         GameController gameController = initialize();
         //gameController.play();
     }
 
-    private static GameController initialize() {
+    private static GameController initialize() throws IOException {
         ArrayList<BoardCard> cards = initializeCards();
+        ArrayList<BoardCard> goldNuggetCards = initializeGoldCards();
         Board board = initializeBoard(cards);
         ArrayList<Player> players = initializePlayers(cards);
         int saboteurs = 0;
@@ -71,31 +75,44 @@ public class Main {
 
         GameState gameState = new GameState(
                 cards,
+                goldNuggetCards,
                 board,
                 players,
-                numOfPlayers-saboteurs,
+                numOfPlayers - saboteurs,
                 saboteurs);
 
         return new GameController(gameState);
     }
-
-    /**
-     * karta 0 - karta startu
-     * karty 1-3 - karty celu
-     * karty 4-70 - reszta kart
-     * TODO
-     */
-    private static ArrayList<BoardCard> initializeCards() {
+    private static ArrayList<BoardCard> initializeCards() throws IOException {
         ArrayList<BoardCard> cards = new ArrayList<>();
-        for (int i=0; i<tunnelCards; i++) {
-            cards.add(new PathCard(null, null, null));
+        for (int i = 0; i < tunnelCards; i++) {
+            cards.add(new PathCard(
+                    new ArrayList<>(CardInfo.directions.get(i)),
+                    CardInfo.isPathBlocked(i),
+                    CardInfo.isPathStarting(i),
+                    CardInfo.isPathTarget(i),
+                    CardInfo.isPathGold(i),
+                    "img/tunnel" + (i + 1) + ".jpg"));
         }
 
-        for (int i=0; i<actionCards; i++) {
-            cards.add(new ActionCard(null, false, false));
+        for (int i = 0; i < actionCards; i++) {
+            cards.add(new ActionCard(
+                    new ArrayList<>(CardInfo.actions.get(i)),
+                    "img/action" + (i + 1) + ".jpg"));
         }
 
         return cards;
+    }
+
+    private static ArrayList<BoardCard> initializeGoldCards() throws IOException {
+        ArrayList<BoardCard> goldNuggetCards = new ArrayList<>();
+        for (int i = 0; i < goldCards; i++) {
+            goldNuggetCards.add(new GoldCard(
+                    CardInfo.goldNuggetCount(i),
+                    "img/gold" + (i + 1) + ".jpg"));
+        }
+
+        return goldNuggetCards;
     }
 
     private static Board initializeBoard(ArrayList<BoardCard> cards) {
@@ -111,7 +128,7 @@ public class Main {
         cells.get(0).get(8).setCard(cards.get(1)); // karta celu 1
         cells.get(2).get(8).setCard(cards.get(2)); // karta celu 2
         cells.get(4).get(8).setCard(cards.get(3)); // karta celu 3
-        for (int i=0; i<4; i++) {
+        for (int i = 0; i < 4; i++) {
             cards.get(i).setAllocated(true);
         }
 
