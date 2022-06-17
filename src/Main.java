@@ -17,7 +17,7 @@ public class Main {
     private static final Integer boardWidth = 9;
     private static final Integer boardHeight = 5;
     private static final Integer numOfPlayers = 3;
-    private static final Integer tunnelCards = 44;
+    private static final Integer tunnelCards = 49;
     private static final Integer actionCards = 27;
     private static final Map<Integer, Integer> saboteurCount = Map.of(
             3, 1,
