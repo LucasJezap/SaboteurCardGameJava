@@ -13,14 +13,6 @@ public class Cell {
         this.card = null;
     }
 
-    public Integer getX() {
-        return x;
-    }
-
-    public Integer getY() {
-        return y;
-    }
-
     public BoardCard getCard() {
         return card;
     }

@@ -10,7 +10,8 @@ public class GoldCard extends BoardCard {
         this.goldNuggetCount = goldNuggetCount;
     }
 
-    public Integer getGoldNuggetCount() {
-        return goldNuggetCount;
+    @Override
+    public String toString() {
+        return "GoldCard: { goldNuggets: " + goldNuggetCount + "}";
     }
 }

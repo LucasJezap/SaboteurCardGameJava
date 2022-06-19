@@ -21,8 +21,4 @@ public class Move {
     public BoardCard getCard() {
         return card;
     }
-
-    public Cell getLocation() {
-        return location;
-    }
 }

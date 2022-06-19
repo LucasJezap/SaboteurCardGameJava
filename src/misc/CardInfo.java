@@ -4,8 +4,25 @@ import card.ActionType;
 import card.Direction;
 
 import java.util.List;
+import java.util.Map;
 
 public class CardInfo {
+    public static final Map<Integer, Integer> saboteurCount = Map.of(
+            3, 1,
+            4, 1,
+            5, 2
+    );
+    public static final Map<Integer, Integer> minerCount = Map.of(
+            3, 3,
+            4, 4,
+            5, 4
+    );
+    public static final Map<Integer, Integer> numOfCards = Map.of(
+            3, 6,
+            4, 6,
+            5, 6
+    );
+
     public static List<List<ActionType>> actions = List.of(
             List.of(ActionType.LAMP, ActionType.CART),
             List.of(ActionType.PICKAXE, ActionType.LAMP),

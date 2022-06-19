@@ -1,7 +1,5 @@
 package board;
 
-import card.BoardCard;
-
 import java.util.ArrayList;
 
 public class Board {
@@ -13,14 +11,6 @@ public class Board {
         this.width = width;
         this.height = height;
         this.cells = cells;
-    }
-
-    public void placeCard(BoardCard card, Integer x, Integer y) {
-        System.out.println("Board placeCard()");
-    }
-
-    public void deleteCard(Integer x, Integer y) {
-        System.out.println("Board deleteCard()");
     }
 
     public Integer getWidth() {

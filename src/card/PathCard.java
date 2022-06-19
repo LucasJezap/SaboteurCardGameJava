@@ -19,15 +19,8 @@ public class PathCard extends BoardCard {
         this.isTreasure = isTreasure;
     }
 
-    public ArrayList<Direction> getRoads() {
-        return roads;
-    }
-
-    public Boolean getGold() {
-        return isGold;
-    }
-
-    public Boolean getTreasure() {
-        return isTreasure;
+    @Override
+    public String toString() {
+        return "PathCard: { roads: " + roads.toString() + ", isBlocked: " + isBlocked + " }";
     }
 }

@@ -11,7 +11,8 @@ public class ActionCard extends BoardCard {
         this.actions = actions;
     }
 
-    public ArrayList<ActionType> getActions() {
-        return actions;
+    @Override
+    public String toString() {
+        return "ActionCard: { actions: " + actions.toString() + " }";
     }
 }
