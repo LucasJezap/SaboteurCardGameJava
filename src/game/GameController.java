@@ -41,6 +41,9 @@ public class GameController {
         } else {
             gameState.players.get(index).unblock(ActionType.getNoBlockType(type));
         }
-        System.out.println(gameState.players.get(index).getIsBlocked());
+    }
+
+    public boolean isPlayerBlocked() {
+        return gameState.players.get(currentPlayer).getIsBlocked().containsValue(true);
     }
 }

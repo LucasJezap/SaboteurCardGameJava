@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70c48675-83f4-4ee1-9198-497f43cc40e4" name="Changes" comment="nearly finished graphical side">
+    <list default="true" id="70c48675-83f4-4ee1-9198-497f43cc40e4" name="Changes" comment="done more work, todo: fix putting path cards and adding new card">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/card/ActionCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/ActionCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/card/ActionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/ActionType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/card/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/card/PathCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/PathCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/misc/CardInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/misc/CardInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/swing/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Frame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/ImagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/ImagePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655659272345</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="done more work, todo: fix putting path cards and adding new card">
+      <created>1656016886618</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1656016886618</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -137,6 +138,7 @@
     <MESSAGE value="added all jpg files" />
     <MESSAGE value="finished initialization - now every card is correctly designed" />
     <MESSAGE value="nearly finished graphical side" />
-    <option name="LAST_COMMIT_MESSAGE" value="nearly finished graphical side" />
+    <MESSAGE value="done more work, todo: fix putting path cards and adding new card" />
+    <option name="LAST_COMMIT_MESSAGE" value="done more work, todo: fix putting path cards and adding new card" />
   </component>
 </project>

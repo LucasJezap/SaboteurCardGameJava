@@ -146,7 +146,8 @@ public class Frame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    gameController.changePlayer();
+                    setChangePlayerTimer();
+                    putTextOnBoard("Next player in 3...");
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -228,6 +229,18 @@ public class Frame {
         f.setVisible(true);
     }
 
+    private void setChangePlayerTimer() {
+        Timer timer = new Timer(3000, t -> {
+            try {
+                gameController.changePlayer();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+        timer.setRepeats(false);
+        timer.start();
+    }
+
     private void setPlayerMouseListener(String name, String number) {
         panels.get(name).addMouseListener(new MouseAdapter() {
             @Override
@@ -260,6 +273,21 @@ public class Frame {
         });
     }
 
+    private boolean doesCardNotFit(PathCard card1, PathCard card2, Direction d1, Direction d2, int row, int column) {
+        if ((column == 0 && d2 == Direction.LEFT) || (column == 8 && d2 == Direction.RIGHT) ||
+                (row == 0 && d2 == Direction.UP) || (row == 4 && d2 == Direction.DOWN)) {
+            return false;
+        }
+
+        if (card1 == null) {
+            return false;
+        }
+
+        return !((!card1.hasRoad(d1) && !card2.hasRoad(d2))
+                || (card1.hasRoad(d1) && card2.hasRoad(d2)));
+
+    }
+
     private void setBoardCardMouseListener(String name, int row, int column) {
         panels.get(name).addMouseListener(new MouseAdapter() {
             @Override
@@ -279,7 +307,7 @@ public class Frame {
                                     } else {
                                         putTextOnBoard("No treasure!");
                                     }
-                                    changePlayer = true;
+                                    setChangePlayerTimer();
                                 } else {
                                     putTextOnBoard("Not a target card!");
                                 }
@@ -299,6 +327,10 @@ public class Frame {
                         }
                     } else if (selectedCard.getType() == CardType.PATH) {
                         try {
+                            if (gameController.isPlayerBlocked()) {
+                                putTextOnBoard("You are blocked!");
+                                return;
+                            }
                             PathCard pathCard = (PathCard) selectedCard;
                             String prefix = "card_";
                             ImagePanel[] neighbours = new ImagePanel[]{
@@ -308,16 +340,21 @@ public class Frame {
                                     (ImagePanel) panels.get(prefix + (row - 1) + "_" + column)
                             };
                             PathCard[] neighbourCards = new PathCard[]{
-                                    (PathCard) neighbours[0].getCard(),
-                                    (PathCard) neighbours[1].getCard(),
-                                    (PathCard) neighbours[2].getCard(),
-                                    (PathCard) neighbours[3].getCard()
+                                    neighbours[0] != null ? (PathCard) neighbours[0].getCard() : null,
+                                    neighbours[1] != null ? (PathCard) neighbours[1].getCard() : null,
+                                    neighbours[2] != null ? (PathCard) neighbours[2].getCard() : null,
+                                    neighbours[3] != null ? (PathCard) neighbours[3].getCard() : null
                             };
 
-                            if ((neighbourCards[0] != null && neighbourCards[0].hasRoad(Direction.RIGHT) && !pathCard.hasRoad(Direction.LEFT)) ||
-                                    (neighbourCards[1] != null && neighbourCards[1].hasRoad(Direction.LEFT) && !pathCard.hasRoad(Direction.RIGHT)) ||
-                                    (neighbourCards[2] != null && neighbourCards[2].hasRoad(Direction.UP) && !pathCard.hasRoad(Direction.DOWN)) ||
-                                    (neighbourCards[3] != null && neighbourCards[3].hasRoad(Direction.DOWN) && !pathCard.hasRoad(Direction.UP))) {
+                            if (neighbourCards[0] == null && neighbourCards[1] == null && neighbourCards[2] == null && neighbourCards[3] == null) {
+                                putTextOnBoard("It must connect!");
+                                return;
+                            }
+
+                            if (doesCardNotFit(neighbourCards[0], pathCard, Direction.RIGHT, Direction.LEFT, row, column) ||
+                                    doesCardNotFit(neighbourCards[1], pathCard, Direction.LEFT, Direction.RIGHT, row, column) ||
+                                    doesCardNotFit(neighbourCards[2], pathCard, Direction.UP, Direction.DOWN, row, column) ||
+                                    doesCardNotFit(neighbourCards[3], pathCard, Direction.DOWN, Direction.UP, row, column)) {
                                 putTextOnBoard("It does not fit!");
                                 return;
                             }
