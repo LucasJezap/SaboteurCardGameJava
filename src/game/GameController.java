@@ -46,4 +46,8 @@ public class GameController {
     public boolean isPlayerBlocked() {
         return gameState.players.get(currentPlayer).getIsBlocked().containsValue(true);
     }
+
+    public boolean isPlayerSaboteur() {
+        return gameState.players.get(currentPlayer).getSaboteur();
+    }
 }

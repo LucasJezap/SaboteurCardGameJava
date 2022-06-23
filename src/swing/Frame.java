@@ -51,7 +51,7 @@ public class Frame {
         addPlayers(players.size());
         addCards(board, cards);
         addPlayerCards(players);
-        addPass();
+        addPassAndDwarf();
         addTextSection();
     }
 
@@ -138,7 +138,7 @@ public class Frame {
         }
     }
 
-    private void addPass() throws IOException {
+    private void addPassAndDwarf() throws IOException {
         String name = "pass";
         addPanel(name, "img/pass.png",
                 new Rectangle((int) (0.81 * frameWidth), (int) (0.9 * frameHeight), frameWidth / 7, frameWidth / 30));
@@ -153,6 +153,18 @@ public class Frame {
                 }
             }
         });
+
+        name = "dwarf";
+        int x = (int) (frameWidth * 0.012);
+        int y = (int) (frameHeight * 0.63);
+        int w = (int) (0.1 * frameWidth);
+        int h = (int) (w / 0.7);
+        if (gameController.isPlayerSaboteur()) {
+            addPanel(name, "img/saboteur.png", new Rectangle(x, y, w, h));
+        } else {
+            addPanel(name, "img/miner.png", new Rectangle(x, y, w, h));
+        }
+
     }
 
     private void addTextSection() {
@@ -200,6 +212,14 @@ public class Frame {
             }
             panel.setCard(player.getCards().get(i));
         }
+
+        ImagePanel panel = (ImagePanel) panels.get("dwarf");
+        if (gameController.isPlayerSaboteur()) {
+            panel.setImage(ImageIO.read(new File("img/saboteur.png")));
+        } else {
+            panel.setImage(ImageIO.read(new File("img/miner.png")));
+        }
+
         putTextOnBoard("Select a card");
     }
 
