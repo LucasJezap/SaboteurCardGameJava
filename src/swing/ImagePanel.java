@@ -1,24 +1,28 @@
 package swing;
 
+import card.BoardCard;
+import card.CardType;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
 import java.awt.image.BufferedImage;
 
 public class ImagePanel extends JPanel {
+    private final Frame f;
     private BufferedImage image;
+    private BoardCard card;
     private final int width;
     private final int height;
-    private Border originalBorder;
+    private final Border originalBorder;
     private boolean hasBorder;
-    private Point previousPoint;
     private final Point corner;
 
-    public ImagePanel(BufferedImage image, int width, int height, boolean clickable) {
+    public ImagePanel(Frame f, BufferedImage image, int width, int height, boolean clickable) {
+        this.f = f;
         this.width = width;
         this.height = height;
         this.hasBorder = false;
@@ -28,8 +32,7 @@ public class ImagePanel extends JPanel {
         corner = new Point(0, 0);
 
         if (clickable) {
-            this.addMouseListener(new ClickListener());
-            this.addMouseMotionListener(new DragListener());
+            this.addMouseListener(new ClickListener(this));
         }
     }
 
@@ -40,41 +43,51 @@ public class ImagePanel extends JPanel {
     }
 
     private class ClickListener extends MouseAdapter {
+        private final ImagePanel imagePanel;
+
+        public ClickListener(ImagePanel imagePanel) {
+            this.imagePanel = imagePanel;
+        }
+
         @Override
         public void mousePressed(MouseEvent e) {
-            previousPoint = e.getPoint();
             if (!hasBorder) {
+                f.setSelectedPanel(imagePanel);
+                if (card.getType() == CardType.ACTION) {
+                    f.putTextOnBoard("Select a player");
+                } else {
+                    f.putTextOnBoard("Select a place");
+                }
                 hasBorder = true;
                 setBorder(new LineBorder(new Color(202, 119, 19), 3, true));
             } else {
+                f.setSelectedPanel(null);
+                f.putTextOnBoard("Select a card");
                 hasBorder = false;
                 setBorder(originalBorder);
             }
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            corner.x = 0;
-            corner.y = 0;
-            repaint();
-        }
-    }
-
-    private class DragListener extends MouseMotionAdapter {
-        @Override
-        public void mouseDragged(MouseEvent e) {
-            Point currentPoint = e.getPoint();
-
-            corner.translate(
-                    (int) (currentPoint.getX() - previousPoint.getX()),
-                    (int) (currentPoint.getY() - previousPoint.getY()));
-
-            previousPoint = currentPoint;
-            repaint();
         }
     }
 
     public void setImage(BufferedImage image) {
         this.image = ImageComponent.resizeIm(image, width, height);
+    }
+
+    public void setCard(BoardCard card) {
+        this.card = card;
+    }
+
+    public boolean isHasBorder() {
+        return hasBorder;
+    }
+
+    public void restartBorder() {
+        f.setSelectedPanel(null);
+        this.hasBorder = false;
+        this.setBorder(originalBorder);
+    }
+
+    public BoardCard getCard() {
+        return card;
     }
 }

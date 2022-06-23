@@ -8,5 +8,16 @@ public enum ActionType {
     LAMP_BLOCK,
     CART_BLOCK,
     ROCKFALL,
-    MAP
+    MAP;
+
+    public static ActionType getNoBlockType(ActionType type) {
+        if (type == PICKAXE_BLOCK)
+            return PICKAXE;
+        else if (type == LAMP_BLOCK)
+            return LAMP;
+        else if (type == CART_BLOCK)
+            return CART;
+        else
+            return type;
+    }
 }

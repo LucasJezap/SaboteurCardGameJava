@@ -1,258 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70c48675-83f4-4ee1-9198-497f43cc40e4" name="Changes" comment="finished initialization - now every card is correctly designed">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action17.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action21.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action22.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action23.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action24.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action25.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action26.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action27.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/action9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/cart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/cart_block.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold17.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold21.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold22.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold23.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold24.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold25.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold26.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold27.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold28.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/gold_back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/lamp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/lamp_block.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/miner.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/pass.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/pickaxe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/pickaxe_block.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/player1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/player2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/player3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/player4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/player5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/player_back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/primary_back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/sabouter.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/target_back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel17.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel21.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel22.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel23.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel24.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel25.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel26.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel27.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel28.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel29.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel30.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel31.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel33.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel34.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel35.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel36.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel37.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel38.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel39.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel40.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel41.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel42.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel43.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel44.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel45.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel46.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel47.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel49.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/tunnel9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/swing/Frame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/swing/ImageComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/swing/ImagePanel.java" afterDir="false" />
+    <list default="true" id="70c48675-83f4-4ee1-9198-497f43cc40e4" name="Changes" comment="nearly finished graphical side">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action14.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action16.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action17.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action18.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action20.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action21.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action22.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action23.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action24.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action25.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action26.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action27.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/action9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold14.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold16.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold17.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold18.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold20.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold21.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold22.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold23.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold24.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold25.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold26.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold27.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold28.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gold_back.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/miner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/player_back.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/primary_back.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/sabouter.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/setup_back.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel14.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel16.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel17.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel18.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel20.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel21.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel22.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel23.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel24.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel25.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel26.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel27.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel28.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel29.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel30.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel31.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel32.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel33.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel34.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel35.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel36.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel37.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel38.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel39.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel40.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel41.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel42.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel43.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel44.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel45.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel46.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel47.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel48.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel49.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/tunnel9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/board/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/board/Cell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/card/ActionCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/ActionCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/card/GoldCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/GoldCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/card/ActionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/ActionType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/card/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/Direction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/card/PathCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/PathCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/misc/CardInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/misc/CardInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/Computer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/Human.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/Move.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Frame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/ImagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/ImagePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,16 +41,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/Users/lukaszjezapkowicz/IdeaProjects/Saboteur/img",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/lukaszjezapkowicz/IdeaProjects/Saboteur/img&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/img" />
@@ -351,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655493937147</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="nearly finished graphical side">
+      <created>1655659272345</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1655659272345</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -370,6 +136,7 @@
     <MESSAGE value="added template + initialization (todo initCards)" />
     <MESSAGE value="added all jpg files" />
     <MESSAGE value="finished initialization - now every card is correctly designed" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished initialization - now every card is correctly designed" />
+    <MESSAGE value="nearly finished graphical side" />
+    <option name="LAST_COMMIT_MESSAGE" value="nearly finished graphical side" />
   </component>
 </project>

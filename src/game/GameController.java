@@ -1,14 +1,14 @@
 package game;
 
-import card.BoardCard;
-import swing.Frame;
+import card.ActionType;
 import player.Move;
-import player.Player;
+import swing.Frame;
 
 import java.io.IOException;
 
 public class GameController {
     protected GameState gameState;
+    protected int currentPlayer;
     protected Frame f;
 
     public GameController() {
@@ -18,38 +18,29 @@ public class GameController {
         this.gameState = gameState;
     }
 
-    public GameState getGameState() {
-        return gameState;
-    }
-
-    public void initializeBoard() throws IOException, InterruptedException {
-        f = new Frame("The Saboteur game", "img/background.png");
+    public void initializeBoard() throws IOException {
+        f = new Frame(this, "The Saboteur game", "img/background.png");
         f.show();
-        f.initialize(gameState.players, gameState.board);
+        f.initialize(gameState.players, gameState.board, gameState.cards);
+        this.currentPlayer = 0;
     }
 
-    public void play() {
-        System.out.println("The game has started.");
-        int currentPlayer = 0;
-        for (int round = 1; round <= 3; round++) {
-            System.out.println("----- Round " + round + " -----");
-            do {
-                Player player = gameState.players.get(currentPlayer);
-                Move move = player.play();
-                BoardCard nextCard = gameState.getRandomUnusedCard();
-                player.getCards().add(nextCard);
-                gameState.processMove(move);
+    public void changePlayer() throws IOException {
 
-                System.out.println("Player " + (currentPlayer + 1) + " has made a move");
-                currentPlayer = (currentPlayer + 1) % gameState.players.size();
-            } while (!gameState.isRoundFinished());
-            System.out.println("Round is finished");
-            gameState.finishRound();
-        }
-        gameState.finishGame();
+        currentPlayer = (currentPlayer + 1) % gameState.players.size();
+        f.nextPlayer(gameState.players.get(currentPlayer), currentPlayer + 1);
     }
 
     public Boolean isMoveValid(Move move) {
         return true;
+    }
+
+    public void changePlayerBlock(ActionType type, int index) {
+        if (type.toString().contains("_BLOCK")) {
+            gameState.players.get(index).block(ActionType.getNoBlockType(type));
+        } else {
+            gameState.players.get(index).unblock(ActionType.getNoBlockType(type));
+        }
+        System.out.println(gameState.players.get(index).getIsBlocked());
     }
 }

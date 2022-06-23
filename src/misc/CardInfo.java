@@ -5,6 +5,7 @@ import card.Direction;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class CardInfo {
     public static final Map<Integer, Integer> saboteurCount = Map.of(
@@ -22,6 +23,8 @@ public class CardInfo {
             4, 6,
             5, 6
     );
+
+    private static final int goldIndex = 1 + new Random().nextInt(3);
 
     public static List<List<ActionType>> actions = List.of(
             List.of(ActionType.LAMP, ActionType.CART),
@@ -127,6 +130,6 @@ public class CardInfo {
     }
 
     public static Boolean isPathGold(int i) {
-        return i == 1;
+        return i == goldIndex;
     }
 }
