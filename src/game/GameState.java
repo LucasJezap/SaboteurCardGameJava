@@ -61,4 +61,8 @@ public class GameState {
     // TODO
     protected void finishGame() {
     }
+
+    public ArrayList<BoardCard> getCards() {
+        return cards;
+    }
 }

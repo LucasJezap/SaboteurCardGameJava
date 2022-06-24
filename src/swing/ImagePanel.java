@@ -1,5 +1,7 @@
 package swing;
 
+import card.ActionCard;
+import card.ActionType;
 import card.BoardCard;
 import card.CardType;
 
@@ -51,10 +53,16 @@ public class ImagePanel extends JPanel {
 
         @Override
         public void mousePressed(MouseEvent e) {
+            f.resetBorders();
             if (card != null && !hasBorder) {
                 f.setSelectedPanel(imagePanel);
                 if (card.getType() == CardType.ACTION) {
-                    f.putTextOnBoard("Select a player");
+                    ActionCard actionCard = (ActionCard) card;
+                    if (actionCard.containAction(ActionType.MAP) || actionCard.containAction(ActionType.ROCKFALL)) {
+                        f.putTextOnBoard("Select a place");
+                    } else {
+                        f.putTextOnBoard("Select a player");
+                    }
                 } else {
                     f.putTextOnBoard("Select a place");
                 }
@@ -85,6 +93,7 @@ public class ImagePanel extends JPanel {
         f.setSelectedPanel(null);
         this.hasBorder = false;
         this.setBorder(originalBorder);
+        this.repaint();
     }
 
     public BoardCard getCard() {

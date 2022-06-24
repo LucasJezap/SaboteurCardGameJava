@@ -235,7 +235,7 @@ public class Frame {
         f.getContentPane().repaint();
     }
 
-    private void changePanelImage(String name, BufferedImage img) {
+    public void changePanelImage(String name, BufferedImage img) {
         ImagePanel p = (ImagePanel) panels.get(name);
         p.setImage(img);
         f.getContentPane().repaint();
@@ -248,6 +248,10 @@ public class Frame {
 
     public void setSelectedPanel(ImagePanel selectedPanel) {
         this.selectedPanel = selectedPanel;
+    }
+
+    public JFrame getF() {
+        return f;
     }
 
     public void show() {
@@ -265,6 +269,15 @@ public class Frame {
         });
         timer.setRepeats(false);
         timer.start();
+    }
+
+    public void resetBorders() {
+        for (String name : panels.keySet()) {
+            if (name.contains("player_card")) {
+                ImagePanel panel = (ImagePanel) panels.get(name);
+                panel.restartBorder();
+            }
+        }
     }
 
     private void setPlayerMouseListener(String name, String number) {
@@ -305,14 +318,21 @@ public class Frame {
     }
 
     private boolean doesCardNotFit(PathCard card1, PathCard card2, Direction d1, Direction d2, int row, int column) {
-        if ((column == 0 && d2 == Direction.LEFT) || (column == 8 && d2 == Direction.RIGHT) ||
-                (row == 0 && d2 == Direction.UP) || (row == 4 && d2 == Direction.DOWN)) {
+        System.out.println(row);
+        System.out.println(column);
+        System.out.println(d1);
+        System.out.println(d2);
+        System.out.println();
+        if ((column == 1 && d2 == Direction.LEFT) || (column == 9 && d2 == Direction.RIGHT) ||
+                (row == 1 && d2 == Direction.UP) || (row == 5 && d2 == Direction.DOWN)) {
             return false;
         }
 
-        if (card1 == null) {
+        if (card1 == null || card1.getGold()) {
             return false;
         }
+        System.out.println("RETURNING TRUE");
+        System.out.println();
 
         return !((!card1.hasRoad(d1) && !card2.hasRoad(d2))
                 || (card1.hasRoad(d1) && card2.hasRoad(d2)));
@@ -369,6 +389,12 @@ public class Frame {
                                 putTextOnBoard("You are blocked!");
                                 return;
                             }
+                            ImagePanel panel = (ImagePanel) panels.get(name);
+                            if (panel.getCard() != null) {
+                                putTextOnBoard("This is taken!");
+                                return;
+                            }
+
                             PathCard pathCard = (PathCard) selectedCard;
                             String prefix = "card_";
                             ImagePanel[] neighbours = new ImagePanel[]{
@@ -397,10 +423,23 @@ public class Frame {
                                 return;
                             }
 
-                            ImagePanel panel = (ImagePanel) panels.get(name);
                             panel.setCard(pathCard);
                             panel.setImage(pathCard.getImage());
                             selectedPanel.restartBorder();
+
+                            if ((column == 8 && row == 1 && pathCard.hasRoad(Direction.RIGHT))
+                                    || (column == 9 && row == 2 && pathCard.hasRoad(Direction.UP))) {
+                                gameController.checkTarget(1);
+                            }
+                            if ((column == 8 && row == 3 && pathCard.hasRoad(Direction.RIGHT))
+                                    || (column == 9 && row == 2 && pathCard.hasRoad(Direction.DOWN))
+                                    || (column == 9 && row == 4 && pathCard.hasRoad(Direction.UP))) {
+                                gameController.checkTarget(2);
+                            }
+                            if ((column == 8 && row == 5 && pathCard.hasRoad(Direction.RIGHT))
+                                    || (column == 9 && row == 4 && pathCard.hasRoad(Direction.DOWN))) {
+                                gameController.checkTarget(3);
+                            }
 
                             changePlayer = true;
                             gameController.addNewCardToPlayer(selectedCard);

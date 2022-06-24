@@ -51,7 +51,6 @@ public class Main {
             }
         }
 
-        unusedCards = new ArrayList<>();
         GameState gameState = new GameState(
                 cards,
                 unusedCards,
