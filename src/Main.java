@@ -22,7 +22,7 @@ public class Main {
     private static final Integer actionCards = 27;
     private static final Integer goldCards = 28;
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException {
         System.out.println("Starting Saboteur...");
 
         gameController = initialize();
@@ -51,6 +51,7 @@ public class Main {
             }
         }
 
+        unusedCards = new ArrayList<>();
         GameState gameState = new GameState(
                 cards,
                 unusedCards,

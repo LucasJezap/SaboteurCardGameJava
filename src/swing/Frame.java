@@ -205,11 +205,17 @@ public class Frame {
         changePanelImage("current_player", "img/player" + num + ".png");
         for (int i = 0; i < player.getCards().size(); i++) {
             String name = "player_card_" + (i + 1);
-            changePanelImage(name, player.getCards().get(i).getImage());
             ImagePanel panel = (ImagePanel) panels.get(name);
             if (panel.isHasBorder()) {
                 panel.restartBorder();
             }
+            if (player.getCards().get(i) == null) {
+                panel.setImage(null);
+                panel.setCard(null);
+                f.repaint();
+                return;
+            }
+            changePanelImage(name, player.getCards().get(i).getImage());
             panel.setCard(player.getCards().get(i));
         }
 
@@ -270,6 +276,10 @@ public class Frame {
                     if (selectedCard.getType() == CardType.ACTION) {
                         try {
                             ActionCard actionCard = (ActionCard) selectedCard;
+                            if (actionCard.containAction(ActionType.ROCKFALL) || actionCard.containAction(ActionType.MAP)) {
+                                putTextOnBoard("Wrong action card!");
+                                return;
+                            }
                             for (ActionType actionType : actionCard.getActions()) {
                                 String[] action = actionType.toString().split("_");
                                 String tool = action[0].toLowerCase();
@@ -281,6 +291,7 @@ public class Frame {
                                 }
                                 gameController.changePlayerBlock(actionType, Integer.parseInt(number) - 1);
                             }
+                            gameController.addNewCardToPlayer(selectedCard);
                             gameController.changePlayer();
                         } catch (Exception ex) {
                             ex.printStackTrace();
@@ -327,6 +338,7 @@ public class Frame {
                                     } else {
                                         putTextOnBoard("No treasure!");
                                     }
+                                    gameController.addNewCardToPlayer(selectedCard);
                                     setChangePlayerTimer();
                                 } else {
                                     putTextOnBoard("Not a target card!");
@@ -343,6 +355,7 @@ public class Frame {
                                     panel.setCard(null);
                                     panel.setImage(null);
                                     changePlayer = true;
+                                    gameController.addNewCardToPlayer(selectedCard);
                                 }
                             } else {
                                 putTextOnBoard("No card here!");
@@ -387,10 +400,10 @@ public class Frame {
                             ImagePanel panel = (ImagePanel) panels.get(name);
                             panel.setCard(pathCard);
                             panel.setImage(pathCard.getImage());
-                            selectedPanel.setCard(null);
-                            selectedPanel.setImage(null);
+                            selectedPanel.restartBorder();
 
                             changePlayer = true;
+                            gameController.addNewCardToPlayer(selectedCard);
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }

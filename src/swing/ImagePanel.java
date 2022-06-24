@@ -51,7 +51,7 @@ public class ImagePanel extends JPanel {
 
         @Override
         public void mousePressed(MouseEvent e) {
-            if (!hasBorder) {
+            if (card != null && !hasBorder) {
                 f.setSelectedPanel(imagePanel);
                 if (card.getType() == CardType.ACTION) {
                     f.putTextOnBoard("Select a player");

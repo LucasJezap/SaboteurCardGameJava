@@ -1,7 +1,9 @@
 package game;
 
 import card.ActionType;
+import card.BoardCard;
 import player.Move;
+import player.Player;
 import swing.Frame;
 
 import java.io.IOException;
@@ -26,7 +28,6 @@ public class GameController {
     }
 
     public void changePlayer() throws IOException {
-
         currentPlayer = (currentPlayer + 1) % gameState.players.size();
         f.nextPlayer(gameState.players.get(currentPlayer), currentPlayer + 1);
     }
@@ -41,6 +42,12 @@ public class GameController {
         } else {
             gameState.players.get(index).unblock(ActionType.getNoBlockType(type));
         }
+    }
+
+    public void addNewCardToPlayer(BoardCard card) {
+        Player player = gameState.players.get(currentPlayer);
+        player.getCards().remove(card);
+        player.getCards().add(gameState.getRandomUnusedCard());
     }
 
     public boolean isPlayerBlocked() {

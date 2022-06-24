@@ -19,4 +19,8 @@ public class ActionCard extends BoardCard {
     public ArrayList<ActionType> getActions() {
         return actions;
     }
+
+    public boolean containAction(ActionType type) {
+        return actions.contains(type);
+    }
 }
