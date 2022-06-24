@@ -336,9 +336,14 @@ public class Frame {
                             }
                         } else if (actionCard.getActions().contains(ActionType.ROCKFALL)) {
                             if (panel.getCard() != null) {
-                                panel.setCard(null);
-                                panel.setImage(null);
-                                changePlayer = true;
+                                PathCard pathCard = (PathCard) panel.getCard();
+                                if (pathCard.getStart() || pathCard.getGold()) {
+                                    putTextOnBoard("It can't be deleted!");
+                                } else {
+                                    panel.setCard(null);
+                                    panel.setImage(null);
+                                    changePlayer = true;
+                                }
                             } else {
                                 putTextOnBoard("No card here!");
                             }

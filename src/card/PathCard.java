@@ -23,6 +23,10 @@ public class PathCard extends BoardCard {
         return roads;
     }
 
+    public Boolean getStart() {
+        return isStart;
+    }
+
     public Boolean getGold() {
         return isGold;
     }
