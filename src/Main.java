@@ -1,38 +1,35 @@
-import board.Board;
-import board.Cell;
 import card.ActionCard;
 import card.BoardCard;
-import card.GoldCard;
 import card.PathCard;
 import game.GameController;
+import game.GameInfo;
 import game.GameState;
-import misc.CardInfo;
 import player.Computer;
 import player.Human;
 import player.Player;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class Main {
     private static GameController gameController;
-    private static final Integer boardWidth = 9;
-    private static final Integer boardHeight = 5;
-    private static final Integer numOfPlayers = 1;
-    private static final Integer tunnelCards = 49;
-    private static final Integer actionCards = 27;
-    private static final Integer goldCards = 28;
 
     public static void main(String[] args) throws IOException {
         gameController = initialize();
         gameController.initializeBoard();
     }
 
+    /**
+     * Initializes GameController:
+     * - generates cards,
+     * - generates players,
+     * - add random cards to players.
+     */
     private static GameController initialize() throws IOException {
         gameController = new GameController();
         ArrayList<BoardCard> cards = initializeCards();
-        ArrayList<BoardCard> goldNuggetCards = initializeGoldCards();
-        Board board = initializeBoard(cards);
         ArrayList<Player> players = initializePlayers(cards);
         int saboteurs = 0;
 
@@ -49,7 +46,7 @@ public class Main {
             }
         }
 
-        GameState gameState = new GameState(cards, unusedCards, goldNuggetCards, board, players, numOfPlayers - saboteurs, saboteurs);
+        GameState gameState = new GameState(cards, unusedCards, players, GameInfo.numOfPlayers - saboteurs, saboteurs);
 
         gameController.setGameState(gameState);
         return gameController;
@@ -57,56 +54,26 @@ public class Main {
 
     private static ArrayList<BoardCard> initializeCards() throws IOException {
         ArrayList<BoardCard> cards = new ArrayList<>();
-        for (int i = 0; i < tunnelCards; i++) {
-            cards.add(new PathCard(new ArrayList<>(CardInfo.directions.get(i)), CardInfo.isPathStarting(i), CardInfo.isPathTarget(i), CardInfo.isPathGold(i), "img/tunnel" + (i + 1) + ".png"));
+        for (int i = 0; i < GameInfo.tunnelCards; i++) {
+            cards.add(new PathCard(new ArrayList<>(GameInfo.directions.get(i)), GameInfo.isPathStarting(i), GameInfo.isPathTarget(i), GameInfo.isPathTreasure(i), "img/tunnel" + (i + 1) + ".png"));
         }
         Collections.shuffle(cards.subList(1, 4));
 
-        for (int i = 0; i < actionCards; i++) {
-            cards.add(new ActionCard(new ArrayList<>(CardInfo.actions.get(i)), "img/action" + (i + 1) + ".png"));
+        for (int i = 0; i < GameInfo.actionCards; i++) {
+            cards.add(new ActionCard(new ArrayList<>(GameInfo.actions.get(i)), "img/action" + (i + 1) + ".png"));
+        }
+
+        for (int i = 0; i < 4; i++) {
+            cards.get(i).setAllocated(true);
         }
 
         return cards;
     }
 
-    private static ArrayList<BoardCard> initializeGoldCards() throws IOException {
-        ArrayList<BoardCard> goldNuggetCards = new ArrayList<>();
-        for (int i = 0; i < goldCards; i++) {
-            goldNuggetCards.add(new GoldCard(CardInfo.goldNuggetCount(i), "img/gold" + (i + 1) + ".png"));
-        }
-
-        return goldNuggetCards;
-    }
-
-    private static Board initializeBoard(ArrayList<BoardCard> cards) {
-        ArrayList<ArrayList<Cell>> cells = new ArrayList<>();
-        for (int i = 0; i < boardHeight; i++) {
-            cells.add(new ArrayList<>());
-            for (int j = 0; j < boardWidth; j++) {
-                cells.get(i).add(new Cell(i, j));
-            }
-        }
-
-        Integer[] targetCards = {1, 2, 3};
-        List<Integer> targetCardsList = Arrays.asList(targetCards);
-        Collections.shuffle(targetCardsList);
-        targetCardsList.toArray(targetCards);
-
-        cells.get(2).get(0).setCard(cards.get(0));
-        cells.get(0).get(boardWidth - 1).setCard(cards.get(targetCards[0]));
-        cells.get(boardHeight / 2).get(boardWidth - 1).setCard(cards.get(targetCards[1]));
-        cells.get(boardHeight - 1).get(boardWidth - 1).setCard(cards.get(targetCards[2]));
-        for (int i = 0; i < 4; i++) {
-            cards.get(i).setAllocated(true);
-        }
-
-        return new Board(boardWidth, boardHeight, cells);
-    }
-
     private static ArrayList<Player> initializePlayers(ArrayList<BoardCard> cards) {
         ArrayList<Player> players = new ArrayList<>();
-        Integer numOfSaboteurs = CardInfo.saboteurCount.get(5);
-        Integer numOfMiners = CardInfo.minerCount.get(5);
+        Integer numOfSaboteurs = GameInfo.saboteurCount;
+        Integer numOfMiners = GameInfo.minerCount;
 
         for (int i = 0; i < 5; i++) {
             Boolean isSaboteur = isPlayerSaboteur(numOfSaboteurs, numOfMiners);
@@ -115,10 +82,10 @@ public class Main {
             } else {
                 numOfMiners--;
             }
-            if (i < numOfPlayers) {
-                players.add(new Human(gameController, isSaboteur, getRandomCards(cards, CardInfo.numOfCards.get(5))));
+            if (i < GameInfo.numOfPlayers) {
+                players.add(new Human(gameController, isSaboteur, getRandomCards(cards)));
             } else {
-                players.add(new Computer(gameController, isSaboteur, getRandomCards(cards, CardInfo.numOfCards.get(5))));
+                players.add(new Computer(gameController, isSaboteur, getRandomCards(cards)));
             }
         }
         Collections.shuffle(players.subList(1, players.size()));
@@ -130,7 +97,8 @@ public class Main {
         return new Random().nextInt(numOfSaboteurs + numOfMiners) < numOfSaboteurs;
     }
 
-    private static ArrayList<BoardCard> getRandomCards(ArrayList<BoardCard> cards, Integer num) {
+    private static ArrayList<BoardCard> getRandomCards(ArrayList<BoardCard> cards) {
+        int num = GameInfo.numOfCards;
         ArrayList<BoardCard> playerCards = new ArrayList<>();
         int numOfCards = cards.size();
         Random random = new Random();

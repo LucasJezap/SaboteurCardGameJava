@@ -1,28 +1,24 @@
-package misc;
+package game;
 
 import card.ActionType;
 import card.Direction;
 
 import java.util.List;
-import java.util.Map;
 
-public class CardInfo {
-    public static final Map<Integer, Integer> saboteurCount = Map.of(
-            3, 1,
-            4, 1,
-            5, 2
-    );
-    public static final Map<Integer, Integer> minerCount = Map.of(
-            3, 3,
-            4, 4,
-            5, 4
-    );
-    public static final Map<Integer, Integer> numOfCards = Map.of(
-            3, 6,
-            4, 6,
-            5, 6
-    );
-
+public class GameInfo {
+    public static final Integer boardWidth = 9;
+    public static final Integer boardHeight = 5;
+    public static final Integer numOfPlayers = 1;
+    public static final Integer tunnelCards = 49;
+    public static final Integer actionCards = 27;
+    public static final Integer goldCards = 28;
+    public static final int saboteurCount = 2;
+    public static final int minerCount = 4;
+    public static final int numOfCards = 6;
+    /**
+     * This is a list of all actions for all action cards in this project.
+     * It had to be filled manually.
+     */
     public static List<List<ActionType>> actions = List.of(
             List.of(ActionType.LAMP, ActionType.CART),
             List.of(ActionType.PICKAXE, ActionType.LAMP),
@@ -52,7 +48,10 @@ public class CardInfo {
             List.of(ActionType.CART),
             List.of(ActionType.LAMP)
     );
-
+    /**
+     * This is a list of all directions for all path cards in this project.
+     * It had to be filled manually.
+     */
     public static List<List<Direction>> directions = List.of(
             List.of(Direction.DOWN, Direction.UP, Direction.LEFT, Direction.RIGHT),
             List.of(Direction.DOWN, Direction.UP, Direction.LEFT, Direction.RIGHT),
@@ -105,15 +104,6 @@ public class CardInfo {
             List.of(Direction.DOWN, Direction.UP, Direction.LEFT, Direction.RIGHT)
     );
 
-    public static Integer goldNuggetCount(int i) {
-        if (i < 16)
-            return 1;
-        else if (i < 24)
-            return 2;
-        else
-            return 3;
-    }
-
     public static Boolean isPathStarting(int i) {
         return i == 0;
     }
@@ -122,7 +112,7 @@ public class CardInfo {
         return i == 1 || i == 2 || i == 3;
     }
 
-    public static Boolean isPathGold(int i) {
+    public static Boolean isPathTreasure(int i) {
         return i == 1;
     }
 }

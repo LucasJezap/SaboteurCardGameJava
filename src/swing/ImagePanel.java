@@ -13,15 +13,17 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
+/**
+ * This class is used for every panel on the Frame's board.
+ */
 public class ImagePanel extends JPanel {
     private final Frame f;
-    private BufferedImage image;
-    private BoardCard card;
     private final int width;
     private final int height;
     private final Border originalBorder;
+    private BufferedImage image;
+    private BoardCard card;
     private boolean hasBorder;
-    private final Point corner;
 
     public ImagePanel(Frame f, BufferedImage image, int width, int height, boolean clickable) {
         this.f = f;
@@ -31,19 +33,36 @@ public class ImagePanel extends JPanel {
         this.originalBorder = getBorder();
 
         this.image = ImageComponent.resizeIm(image, width, height);
-        corner = new Point(0, 0);
 
+        // only for player's deck
         if (clickable) {
             this.addMouseListener(new ClickListener(this));
         }
     }
 
+    /**
+     * Draws the image.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(image, (int) corner.getX(), (int) corner.getY(), null);
+        g.drawImage(image, 0, 0, null);
     }
 
+    /**
+     * Deletes the selection border of the player card.
+     */
+    public void restartBorder() {
+        f.setSelectedPanel(null);
+        this.hasBorder = false;
+        this.setBorder(originalBorder);
+        this.repaint();
+    }
+
+    /**
+     * Custom ClickListener for cards in the player's deck.
+     * It highlights the card and saves it in Frame for further usage.
+     */
     private class ClickListener extends MouseAdapter {
         private final ImagePanel imagePanel;
 
@@ -81,22 +100,15 @@ public class ImagePanel extends JPanel {
         this.image = ImageComponent.resizeIm(image, width, height);
     }
 
-    public void setCard(BoardCard card) {
-        this.card = card;
-    }
-
     public boolean isHasBorder() {
         return hasBorder;
     }
 
-    public void restartBorder() {
-        f.setSelectedPanel(null);
-        this.hasBorder = false;
-        this.setBorder(originalBorder);
-        this.repaint();
-    }
-
     public BoardCard getCard() {
         return card;
+    }
+
+    public void setCard(BoardCard card) {
+        this.card = card;
     }
 }

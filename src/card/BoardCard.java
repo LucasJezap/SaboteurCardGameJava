@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public abstract class BoardCard {
     protected final CardType type;
-    protected Boolean isAllocated;
     protected final BufferedImage image;
+    protected Boolean isAllocated;
 
     public BoardCard(CardType type, String imagePath) throws IOException {
         this.type = type;

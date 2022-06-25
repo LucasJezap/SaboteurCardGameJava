@@ -2,6 +2,7 @@ package player;
 
 import card.*;
 import game.GameController;
+import game.GameInfo;
 import swing.Frame;
 import swing.ImagePanel;
 
@@ -14,6 +15,10 @@ public class Computer extends Player {
         super(gameController, isSaboteur, cards);
     }
 
+    /**
+     * Finds all player's cards that can be used on the board.
+     * Returns a random one of them.
+     */
     public BoardCard useRandomCard(boolean isBlocked) {
         ArrayList<BoardCard> possibleCards = new ArrayList<>();
         for (BoardCard card : cards) {
@@ -22,17 +27,23 @@ public class Computer extends Player {
             }
         }
 
-        return possibleCards.size() > 0? possibleCards.get(new Random().nextInt(possibleCards.size())): null;
+        return possibleCards.size() > 0 ? possibleCards.get(new Random().nextInt(possibleCards.size())) : null;
     }
 
+    /**
+     * Checks if given card can be used on the board, depending on its type.
+     * If it's an Action Card, then it only checks if ROCKFALL can be used (the rest can be always used).
+     * If it's a Path Card, it looks for a place on the board where the card can be placed.
+     * Finding at least 1 place, it returns true.
+     */
     public static boolean isCardValid(GameController gameController, BoardCard card, Boolean isBlocked) {
         if (card.getType() == CardType.PATH) {
             if (isBlocked) {
                 return false;
             }
             PathCard pathCard = (PathCard) card;
-            for (int i = 0; i < gameController.getGameState().getBoard().getHeight(); i++) {
-                for (int j = 0; j < gameController.getGameState().getBoard().getWidth(); j++) {
+            for (int i = 0; i < GameInfo.boardHeight; i++) {
+                for (int j = 0; j < GameInfo.boardWidth; j++) {
                     ImagePanel panel = (ImagePanel) gameController.getF().getPanels().get("card_" + (i + 1) + "_" + (j + 1));
                     if (panel.getCard() != null) {
                         continue;
@@ -60,8 +71,8 @@ public class Computer extends Player {
         } else {
             ActionCard actionCard = (ActionCard) card;
             if (actionCard.containAction(ActionType.ROCKFALL)) {
-                for (int i = 0; i < gameController.getGameState().getBoard().getHeight(); i++) {
-                    for (int j = 0; j < gameController.getGameState().getBoard().getWidth(); j++) {
+                for (int i = 0; i < GameInfo.boardHeight; i++) {
+                    for (int j = 0; j < GameInfo.boardWidth; j++) {
                         String name = "card_" + (i + 1) + "_" + (j + 1);
                         if (gameController.panelContainsCard(name)) {
                             return true;
@@ -75,14 +86,19 @@ public class Computer extends Player {
         }
     }
 
+    /**
+     * Plays the given card.
+     * It looks for the first compatible place on the board, then plays the card.
+     * It is granted that there is a possibility to play that card.
+     */
     public static String playActionCard(GameController gameController, ActionCard actionCard) throws IOException {
         Frame f = gameController.getF();
         if (actionCard.containAction(ActionType.MAP)) {
             int randomTarget = new Random().nextInt(3);
-            return "He looked at target card " + randomTarget;
+            return "Look at target card " + (randomTarget + 1);
         } else if (actionCard.containAction(ActionType.ROCKFALL)) {
-            for (int i = 0; i < gameController.getGameState().getBoard().getHeight(); i++) {
-                for (int j = 0; j < gameController.getGameState().getBoard().getWidth(); j++) {
+            for (int i = 0; i < GameInfo.boardHeight; i++) {
+                for (int j = 0; j < GameInfo.boardWidth; j++) {
                     ImagePanel panel = (ImagePanel) gameController.getF().getPanels().get("card_" + (i + 1) + "_" + (j + 1));
                     if (panel.getCard() == null) {
                         continue;
@@ -93,7 +109,7 @@ public class Computer extends Player {
                     }
                     panel.setCard(null);
                     panel.setImage(null);
-                    return "He destroyed card (" + (i + 1) + "," + (j + 1) + ")";
+                    return "Destroy card (" + (i + 1) + "," + (j + 1) + ")";
                 }
             }
             return "";
@@ -111,16 +127,21 @@ public class Computer extends Player {
                 gameController.changePlayerBlock(actionType, randomPlayer - 1);
             }
             if (actionCard.getActions().size() > 1 || !actionCard.getActions().get(0).toString().contains("BLOCK")) {
-                return "He unblocked Player " + randomPlayer;
+                String actions = actionCard.getActions().get(0).toString().split("_")[0];
+                if (actionCard.getActions().size() > 1) {
+                    actions = actions + " " + actionCard.getActions().get(1).toString().split("_")[0];
+                }
+                return "Unblock Player " + randomPlayer + "(" + actions + ")";
             } else {
-                return "He blocked Player " + randomPlayer;
+                return "Block Player " + randomPlayer + " (" +
+                        actionCard.getActions().get(0).toString().split("_")[0] + ")";
             }
         }
     }
 
     public static String playPathCard(GameController gameController, PathCard pathCard) {
-        for (int i = 0; i < gameController.getGameState().getBoard().getHeight(); i++) {
-            for (int j = 0; j < gameController.getGameState().getBoard().getWidth(); j++) {
+        for (int i = 0; i < GameInfo.boardHeight; i++) {
+            for (int j = 0; j < GameInfo.boardWidth; j++) {
                 ImagePanel panel = (ImagePanel) gameController.getF().getPanels().get("card_" + (i + 1) + "_" + (j + 1));
                 if (panel.getCard() != null) {
                     continue;
@@ -142,17 +163,17 @@ public class Computer extends Player {
                 if (connections > 0 && possibleConnections == connections) {
                     panel.setCard(pathCard);
                     panel.setImage(pathCard.getImage());
-                    if ((j+1 == 8 && i+1 == 1 && pathCard.hasRoad(Direction.RIGHT))
-                            || (j+1 == 9 && i+1 == 2 && pathCard.hasRoad(Direction.UP))) {
+                    if ((j + 1 == 8 && i + 1 == 1 && pathCard.hasRoad(Direction.RIGHT))
+                            || (j + 1 == 9 && i + 1 == 2 && pathCard.hasRoad(Direction.UP))) {
                         gameController.checkTarget(1);
                     }
-                    if ((j+1 == 8 && i+1 == 3 && pathCard.hasRoad(Direction.RIGHT))
-                            || (j+1 == 9 && i+1 == 2 && pathCard.hasRoad(Direction.DOWN))
-                            || (j+1 == 9 && i+1 == 4 && pathCard.hasRoad(Direction.UP))) {
+                    if ((j + 1 == 8 && i + 1 == 3 && pathCard.hasRoad(Direction.RIGHT))
+                            || (j + 1 == 9 && i + 1 == 2 && pathCard.hasRoad(Direction.DOWN))
+                            || (j + 1 == 9 && i + 1 == 4 && pathCard.hasRoad(Direction.UP))) {
                         gameController.checkTarget(2);
                     }
-                    if ((j+1 == 8 && i+1 == 5 && pathCard.hasRoad(Direction.RIGHT))
-                            || (j+1 == 9 && i+1 == 4 && pathCard.hasRoad(Direction.DOWN))) {
+                    if ((j + 1 == 8 && i + 1 == 5 && pathCard.hasRoad(Direction.RIGHT))
+                            || (j + 1 == 9 && i + 1 == 4 && pathCard.hasRoad(Direction.DOWN))) {
                         gameController.checkTarget(3);
                     }
                     return "Put a card at (" + (i + 1) + "," + (j + 1) + ")";

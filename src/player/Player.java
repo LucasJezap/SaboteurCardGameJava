@@ -13,14 +13,12 @@ public abstract class Player {
     protected final Boolean isSaboteur;
     protected Map<ActionType, Boolean> isBlocked;
     protected final ArrayList<BoardCard> cards;
-    protected final Integer goldCount;
 
     public Player(GameController gameController, Boolean isSaboteur, ArrayList<BoardCard> cards) {
         this.gameController = gameController;
         this.isSaboteur = isSaboteur;
         this.isBlocked = new HashMap<>(Map.of(ActionType.PICKAXE, false, ActionType.CART, false, ActionType.LAMP, false));
         this.cards = cards;
-        this.goldCount = 0;
     }
 
     public Boolean getSaboteur() {
@@ -31,15 +29,15 @@ public abstract class Player {
         return cards;
     }
 
+    public Map<ActionType, Boolean> getIsBlocked() {
+        return isBlocked;
+    }
+
     public void block(ActionType type) {
         isBlocked.put(type, true);
     }
 
     public void unblock(ActionType type) {
         isBlocked.put(type, false);
-    }
-
-    public Map<ActionType, Boolean> getIsBlocked() {
-        return isBlocked;
     }
 }

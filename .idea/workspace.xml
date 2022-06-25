@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70c48675-83f4-4ee1-9198-497f43cc40e4" name="Changes" comment="nearly finished, add computer logic, target card shuffling and checking if saboteurs won">
+    <list default="true" id="70c48675-83f4-4ee1-9198-497f43cc40e4" name="Changes" comment="works like a charm :)&#10;todo: reformat code, add documentation&#10;note: blocking path cards are not working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/card/ActionCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/ActionCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/card/GoldCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/GoldCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/Board.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/Cell.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/card/BoardCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/BoardCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/card/CardType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/CardType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/card/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/Direction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/card/GoldCard.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/card/PathCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/PathCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/misc/CardInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/misc/CardInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/misc/CardInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/player/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/Computer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/Human.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/Move.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/MoveType.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/swing/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Frame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/ImageComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/ImageComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/ImagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/ImagePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,16 +48,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/lukaszjezapkowicz/IdeaProjects/Saboteur/img&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/lukaszjezapkowicz/IdeaProjects/Saboteur",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/img" />
@@ -86,6 +89,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1655475648595</updated>
+      <workItem from="1656159482393" duration="3181000" />
     </task>
     <task id="LOCAL-00001" summary="added template + initialization (todo initCards)">
       <created>1655485249070</created>
@@ -164,8 +168,18 @@
       <option name="project" value="LOCAL" />
       <updated>1656103448212</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="works like a charm :)&#10;todo: reformat code, add documentation&#10;note: blocking path cards are not working">
+      <created>1656146429169</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1656146429169</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -190,6 +204,11 @@
     <MESSAGE value="make sure special cards cannot be deleted with rockfall" />
     <MESSAGE value="added adding new card to player's board&#10;todo: end round/game + computer movement" />
     <MESSAGE value="nearly finished, add computer logic, target card shuffling and checking if saboteurs won" />
-    <option name="LAST_COMMIT_MESSAGE" value="nearly finished, add computer logic, target card shuffling and checking if saboteurs won" />
+    <MESSAGE value="works like a charm :)&#10;todo: reformat code, add documentation&#10;note: blocking path cards are not working" />
+    <option name="LAST_COMMIT_MESSAGE" value="works like a charm :)&#10;todo: reformat code, add documentation&#10;note: blocking path cards are not working" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

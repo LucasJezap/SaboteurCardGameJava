@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class PathCard extends BoardCard {
     protected final ArrayList<Direction> roads;
     protected final Boolean isStart;
-    protected Boolean isGold;
     protected final Boolean isTreasure;
+    protected Boolean isGold;
 
     public PathCard(ArrayList<Direction> roads, Boolean isStart, Boolean isGold, Boolean isTreasure, String imagePath) throws IOException {
         super(CardType.PATH, imagePath);
@@ -15,10 +15,6 @@ public class PathCard extends BoardCard {
         this.isStart = isStart;
         this.isGold = isGold;
         this.isTreasure = isTreasure;
-    }
-
-    public ArrayList<Direction> getRoads() {
-        return roads;
     }
 
     public Boolean getStart() {
@@ -29,12 +25,12 @@ public class PathCard extends BoardCard {
         return isGold;
     }
 
-    public Boolean getTreasure() {
-        return isTreasure;
-    }
-
     public void setGold(Boolean gold) {
         isGold = gold;
+    }
+
+    public Boolean getTreasure() {
+        return isTreasure;
     }
 
     public Boolean hasRoad(Direction direction) {

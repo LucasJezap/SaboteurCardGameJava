@@ -9,6 +9,7 @@ import swing.ImagePanel;
 import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GameController {
     protected GameState gameState;
@@ -18,22 +19,14 @@ public class GameController {
     public GameController() {
     }
 
-    public Frame getF() {
-        return f;
-    }
-
-    public void setGameState(GameState gameState) {
-        this.gameState = gameState;
-    }
-
-    public GameState getGameState() {
-        return gameState;
-    }
-
+    /**
+     * Creates swing frame and shows it.
+     * It also displays a welcome message.
+     */
     public void initializeBoard() throws IOException {
         f = new Frame(this, "The Saboteur game", "img/background.png");
         f.show();
-        f.initialize(gameState.players, gameState.board, gameState.cards);
+        f.initialize(gameState.players, gameState.cards);
         this.currentPlayer = 0;
         JOptionPane.showMessageDialog(f.getF(),
                 """
@@ -45,6 +38,10 @@ public class GameController {
                         Have fun!""");
     }
 
+    /**
+     * Changes player.
+     * If it's a computer, it makes a random move and changes to next player.
+     */
     public void changePlayer() throws IOException {
         currentPlayer = (currentPlayer + 1) % gameState.players.size();
         f.nextPlayer(gameState.players.get(currentPlayer), currentPlayer + 1);
@@ -54,6 +51,9 @@ public class GameController {
         }
     }
 
+    /**
+     * Makes a random computer move and displays the move.
+     */
     private void doComputerMove() throws IOException {
         Computer computer = (Computer) gameState.players.get(currentPlayer);
         BoardCard card = computer.useRandomCard(isPlayerBlocked());
@@ -71,6 +71,9 @@ public class GameController {
     }
 
 
+    /**
+     * (Un)blocks the player.
+     */
     public void changePlayerBlock(ActionType type, int index) {
         if (type.toString().contains("_BLOCK")) {
             gameState.players.get(index).block(ActionType.getNoBlockType(type));
@@ -79,6 +82,9 @@ public class GameController {
         }
     }
 
+    /**
+     * Replaces used card with a new, random one from the stock.
+     */
     public void addNewCardToPlayer(BoardCard card) {
         Player player = gameState.players.get(currentPlayer);
         player.getCards().remove(card);
@@ -86,6 +92,10 @@ public class GameController {
         areCardsFinished();
     }
 
+    /**
+     * Checks what target card was discovered.
+     * If the target card is a treasure, the game ends.
+     */
     public void checkTarget(int num) {
         PathCard pathCard = (PathCard) gameState.getCards().get(num);
         if (num == 1) {
@@ -102,7 +112,14 @@ public class GameController {
         }
     }
 
+    /**
+     * Checks if saboteurs have won.
+     * If there are no cards in the stock and no player can use a card - the game ends.
+     */
     public void areCardsFinished() {
+        if (gameState.unusedCards.size() != 0) {
+            return;
+        }
         boolean endOfGame = true;
         for (Player player : gameState.players) {
             for (BoardCard card : player.getCards()) {
@@ -117,19 +134,19 @@ public class GameController {
         }
     }
 
+    /**
+     * Ends game, with appropriate message.
+     * Closes the program.
+     */
     private void endGame(String message) {
         JOptionPane.showMessageDialog(f.getF(), message);
         System.exit(0);
     }
 
-    public boolean isPlayerBlocked() {
-        return gameState.players.get(currentPlayer).getIsBlocked().containsValue(true);
-    }
-
-    public boolean isPlayerSaboteur() {
-        return gameState.players.get(currentPlayer).getSaboteur();
-    }
-
+    /**
+     * Checks if given JPanel contains a Path Card.
+     * It cannot be start or target card.
+     */
     public boolean panelContainsCard(String name) {
         ImagePanel panel = (ImagePanel) f.getPanels().get(name);
         if (panel.getCard() != null) {
@@ -140,6 +157,9 @@ public class GameController {
         return false;
     }
 
+    /**
+     * Returns all neighbours (or null values) of given panel.
+     */
     public ArrayList<PathCard> getPanelNeighbours(int row, int col) {
         ArrayList<PathCard> cards = new ArrayList<>();
         int[] rows = {0, 1, -1, 0};
@@ -159,5 +179,38 @@ public class GameController {
             }
         }
         return cards;
+    }
+
+    /**
+     * Returns a random card from current player deck.
+     */
+    public BoardCard randomCard() {
+        ArrayList<BoardCard> cards = gameState.players.get(currentPlayer).getCards();
+        while (true) {
+            int num = new Random().nextInt(cards.size());
+            if (cards.get(num) != null) {
+                return cards.get(num);
+            }
+        }
+    }
+
+    public Frame getF() {
+        return f;
+    }
+
+    public GameState getGameState() {
+        return gameState;
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
+    public boolean isPlayerBlocked() {
+        return gameState.players.get(currentPlayer).getIsBlocked().containsValue(true);
+    }
+
+    public boolean isPlayerSaboteur() {
+        return gameState.players.get(currentPlayer).getSaboteur();
     }
 }

@@ -1,9 +1,8 @@
 package swing;
 
-import board.Board;
 import card.*;
 import game.GameController;
-import misc.CardInfo;
+import game.GameInfo;
 import player.Player;
 
 import javax.imageio.ImageIO;
@@ -24,11 +23,11 @@ public class Frame {
     protected final GameController gameController;
     protected final String title;
     protected final String imagePath;
-    protected BufferedImage image;
     protected final Integer frameWidth;
     protected final Integer frameHeight;
     protected final ImageComponent imageComponent;
     protected final Map<String, JPanel> panels = new HashMap<>();
+    protected BufferedImage image;
     protected ImagePanel selectedPanel;
 
     public Frame(GameController gameController, String title, String imagePath) throws IOException {
@@ -46,15 +45,29 @@ public class Frame {
         imageComponent.resizeImage(frameWidth, frameHeight);
     }
 
-    public void initialize(ArrayList<Player> players, Board board, ArrayList<BoardCard> cards) throws IOException {
+    /**
+     * Initializes the Frame:
+     * - adds labels (text),
+     * - adds players and their tools,
+     * - adds cards on board,
+     * - adds cards to player's deck,
+     * - adds pass button and dwarf image,
+     * - adds text section for instructions.
+     */
+    public void initialize(ArrayList<Player> players, ArrayList<BoardCard> cards) throws IOException {
         addLabels();
         addPlayers(players.size());
-        addCards(board, cards);
+        addCards(cards);
         addPlayerCards(players);
         addPassAndDwarf();
         addTextSection();
     }
 
+    /**
+     * Adds two label panels:
+     * - title,
+     * - copyright.
+     */
     private void addLabels() {
         JPanel panel = new JPanel();
         JLabel label = new JLabel("The Saboteur Game", SwingConstants.CENTER);
@@ -77,6 +90,10 @@ public class Frame {
         f.getContentPane().repaint();
     }
 
+    /**
+     * Adds 5 players and their tools panels. Also adds current player panel.
+     * Sets mouse click listener.
+     */
     private void addPlayers(int numOfPlayers) throws IOException {
         for (int i = 0; i < numOfPlayers; i++) {
             int x = 0;
@@ -97,11 +114,15 @@ public class Frame {
                 new Rectangle((int) (0.81 * frameWidth), (int) (0.25 * frameHeight), frameWidth / 7, frameWidth / 30));
     }
 
-    private void addCards(Board board, ArrayList<BoardCard> cards) throws IOException {
+    /**
+     * Adds 45 board panels. Initializes starting card and target cards.
+     * Sets mouse click listener.
+     */
+    private void addCards(ArrayList<BoardCard> cards) throws IOException {
         int cardWidth = (int) (0.07 * frameWidth);
         int cardHeight = (int) (cardWidth / 0.7);
-        for (int i = 0; i < board.getHeight(); i++) {
-            for (int j = 0; j < board.getWidth(); j++) {
+        for (int i = 0; i < GameInfo.boardHeight; i++) {
+            for (int j = 0; j < GameInfo.boardWidth; j++) {
                 int x = (int) (0.125 * frameWidth + j * cardWidth);
                 int y = (int) (0.115 * frameHeight + i * cardHeight);
                 int row = i + 1;
@@ -124,11 +145,14 @@ public class Frame {
         }
     }
 
+    /**
+     * Adds 6 player cards panels (deck).
+     */
     private void addPlayerCards(ArrayList<Player> players) {
         int cardWidth = (int) (0.07 * frameWidth);
         int cardHeight = (int) (cardWidth / 0.7);
         ArrayList<BoardCard> cards = players.get(0).getCards();
-        for (int i = 0; i < CardInfo.numOfCards.get(players.size()); i++) {
+        for (int i = 0; i < GameInfo.numOfCards; i++) {
             int x = (int) (0.81 * frameWidth + (i % 2) * cardWidth);
             int y = (int) (0.37 * frameHeight + (i % 3) * cardHeight);
             String name = "player_card_" + (i + 1);
@@ -138,6 +162,10 @@ public class Frame {
         }
     }
 
+    /**
+     * Adds pass button and dwarf panels.
+     * Sets pass button mouse click listener.
+     */
     private void addPassAndDwarf() throws IOException {
         String name = "pass";
         addPanel(name, "img/pass.png",
@@ -146,6 +174,11 @@ public class Frame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
+                    if (selectedPanel != null && selectedPanel.getCard() != null) {
+                        gameController.addNewCardToPlayer(selectedPanel.getCard());
+                    } else {
+                        gameController.addNewCardToPlayer(gameController.randomCard());
+                    }
                     setChangePlayerTimer();
                     putTextOnBoard("Next player in 3...");
                 } catch (Exception ex) {
@@ -167,6 +200,9 @@ public class Frame {
 
     }
 
+    /**
+     * Adds text section panel and puts a starting message.
+     */
     private void addTextSection() {
         JPanel panel = new JPanel();
         JLabel label = new JLabel("", SwingConstants.CENTER);
@@ -176,12 +212,15 @@ public class Frame {
         panel.setLayout(new GridBagLayout());
         panel.add(label);
         f.add(panel);
-        panels.put("textboard", panel);
+        panels.put("text board", panel);
         label.setText("Select a card");
 
         f.getContentPane().repaint();
     }
 
+    /**
+     * Adds new panel to panels map. It takes image path as a parameter.
+     */
     private void addPanel(String name, String path, Rectangle r) throws IOException {
         BufferedImage img = ImageIO.read(new File(path));
         JPanel panel = new ImagePanel(this, img, r.width, r.height, false);
@@ -192,6 +231,9 @@ public class Frame {
         f.getContentPane().repaint();
     }
 
+    /**
+     * Adds new panel to panels map. It takes BufferedImage as a parameter.
+     */
     private void addPanel(String name, BufferedImage img, Rectangle r, boolean clickable) {
         JPanel panel = new ImagePanel(this, img, r.width, r.height, clickable);
         panel.setBounds(r);
@@ -201,6 +243,12 @@ public class Frame {
         f.getContentPane().repaint();
     }
 
+    /**
+     * Changes board for next player:
+     * - deselects the current card,
+     * - replaces all 6 cards,
+     * - replaces dwarf image.
+     */
     public void nextPlayer(Player player, int num) throws IOException {
         changePanelImage("current_player", "img/player" + num + ".png");
         for (int i = 0; i < player.getCards().size(); i++) {
@@ -229,40 +277,35 @@ public class Frame {
         putTextOnBoard("Select a card");
     }
 
+    /**
+     * Changes image of the given panel. It takes image path as a parameter.
+     */
     public void changePanelImage(String name, String path) throws IOException {
         ImagePanel p = (ImagePanel) panels.get(name);
         p.setImage(ImageIO.read(new File(path)));
         f.getContentPane().repaint();
     }
 
+    /**
+     * Changes image of the given panel. It takes BufferedImage as a parameter.
+     */
     public void changePanelImage(String name, BufferedImage img) {
         ImagePanel p = (ImagePanel) panels.get(name);
         p.setImage(img);
         f.getContentPane().repaint();
     }
 
+    /**
+     * Helper function to put text on text board.
+     */
     public void putTextOnBoard(String text) {
-        JLabel label = (JLabel) panels.get("textboard").getComponents()[0];
+        JLabel label = (JLabel) panels.get("text board").getComponents()[0];
         label.setText(text);
     }
 
-    public void setSelectedPanel(ImagePanel selectedPanel) {
-        this.selectedPanel = selectedPanel;
-    }
-
-    public Map<String, JPanel> getPanels() {
-        return panels;
-    }
-
-    public JFrame getF() {
-        return f;
-    }
-
-    public void show() {
-        f.setContentPane(imageComponent);
-        f.setVisible(true);
-    }
-
+    /**
+     * Sets up a 3-second timer. After that time, the player changes.
+     */
     private void setChangePlayerTimer() {
         Timer timer = new Timer(3000, t -> {
             try {
@@ -275,6 +318,9 @@ public class Frame {
         timer.start();
     }
 
+    /**
+     * Deselects all cards in player's deck.
+     */
     public void resetBorders() {
         for (String name : panels.keySet()) {
             if (name.contains("player_card")) {
@@ -284,6 +330,12 @@ public class Frame {
         }
     }
 
+    /**
+     * Mouse click listener for Player panels. After clicking:
+     * - it checks if the selected card is an Action card,
+     * - it checks if the action card is not a MAP or ROCKFALL card,
+     * - it applies the card (blocks player and changes images on board).
+     */
     private void setPlayerMouseListener(String name, String number) {
         panels.get(name).addMouseListener(new MouseAdapter() {
             @Override
@@ -321,6 +373,12 @@ public class Frame {
         });
     }
 
+    /**
+     * Function that checks if two path cards fit to each other:
+     * - if the card is to be placed at the border, it returns false,
+     * - if neighbouring card is empty or is a target card, it returns false,
+     * - it checks if both cards have road (or neither of them).
+     */
     private boolean doesCardNotFit(PathCard card1, PathCard card2, Direction d1, Direction d2, int row, int column) {
         if ((column == 1 && d2 == Direction.LEFT) || (column == 9 && d2 == Direction.RIGHT) ||
                 (row == 1 && d2 == Direction.UP) || (row == 5 && d2 == Direction.DOWN)) {
@@ -336,6 +394,12 @@ public class Frame {
 
     }
 
+    /**
+     * Mouse click listener for board card panels. After clicking:
+     * - it checks if the selected card is an Action card or Path card,
+     * - if the card is an Action card, it checks if it's a MAP or ROCKFALL card. It applies the card appropriately.
+     * - if the card is a Path card, it checks if the card fits in the selected place.
+     */
     private void setBoardCardMouseListener(String name, int row, int column) {
         panels.get(name).addMouseListener(new MouseAdapter() {
             @Override
@@ -456,6 +520,26 @@ public class Frame {
                 }
             }
         });
+    }
+
+    /**
+     * Shows the frame.
+     */
+    public void show() {
+        f.setContentPane(imageComponent);
+        f.setVisible(true);
+    }
+
+    public void setSelectedPanel(ImagePanel selectedPanel) {
+        this.selectedPanel = selectedPanel;
+    }
+
+    public Map<String, JPanel> getPanels() {
+        return panels;
+    }
+
+    public JFrame getF() {
+        return f;
     }
 }
 
