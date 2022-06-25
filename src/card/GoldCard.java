@@ -9,9 +9,4 @@ public class GoldCard extends BoardCard {
         super(CardType.GOLD, imagePath);
         this.goldNuggetCount = goldNuggetCount;
     }
-
-    @Override
-    public String toString() {
-        return "GoldCard: { goldNuggets: " + goldNuggetCount + "}";
-    }
 }

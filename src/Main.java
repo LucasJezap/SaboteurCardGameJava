@@ -7,6 +7,7 @@ import card.PathCard;
 import game.GameController;
 import game.GameState;
 import misc.CardInfo;
+import player.Computer;
 import player.Human;
 import player.Player;
 
@@ -17,17 +18,14 @@ public class Main {
     private static GameController gameController;
     private static final Integer boardWidth = 9;
     private static final Integer boardHeight = 5;
-    private static final Integer numOfPlayers = 5;
+    private static final Integer numOfPlayers = 1;
     private static final Integer tunnelCards = 49;
     private static final Integer actionCards = 27;
     private static final Integer goldCards = 28;
 
     public static void main(String[] args) throws IOException {
-        System.out.println("Starting Saboteur...");
-
         gameController = initialize();
         gameController.initializeBoard();
-//        gameController.play();
     }
 
     private static GameController initialize() throws IOException {
@@ -51,14 +49,7 @@ public class Main {
             }
         }
 
-        GameState gameState = new GameState(
-                cards,
-                unusedCards,
-                goldNuggetCards,
-                board,
-                players,
-                numOfPlayers - saboteurs,
-                saboteurs);
+        GameState gameState = new GameState(cards, unusedCards, goldNuggetCards, board, players, numOfPlayers - saboteurs, saboteurs);
 
         gameController.setGameState(gameState);
         return gameController;
@@ -67,19 +58,12 @@ public class Main {
     private static ArrayList<BoardCard> initializeCards() throws IOException {
         ArrayList<BoardCard> cards = new ArrayList<>();
         for (int i = 0; i < tunnelCards; i++) {
-            cards.add(new PathCard(
-                    new ArrayList<>(CardInfo.directions.get(i)),
-                    CardInfo.isPathBlocked(i),
-                    CardInfo.isPathStarting(i),
-                    CardInfo.isPathTarget(i),
-                    CardInfo.isPathGold(i),
-                    "img/tunnel" + (i + 1) + ".png"));
+            cards.add(new PathCard(new ArrayList<>(CardInfo.directions.get(i)), CardInfo.isPathStarting(i), CardInfo.isPathTarget(i), CardInfo.isPathGold(i), "img/tunnel" + (i + 1) + ".png"));
         }
+        Collections.shuffle(cards.subList(1, 4));
 
         for (int i = 0; i < actionCards; i++) {
-            cards.add(new ActionCard(
-                    new ArrayList<>(CardInfo.actions.get(i)),
-                    "img/action" + (i + 1) + ".png"));
+            cards.add(new ActionCard(new ArrayList<>(CardInfo.actions.get(i)), "img/action" + (i + 1) + ".png"));
         }
 
         return cards;
@@ -88,9 +72,7 @@ public class Main {
     private static ArrayList<BoardCard> initializeGoldCards() throws IOException {
         ArrayList<BoardCard> goldNuggetCards = new ArrayList<>();
         for (int i = 0; i < goldCards; i++) {
-            goldNuggetCards.add(new GoldCard(
-                    CardInfo.goldNuggetCount(i),
-                    "img/gold" + (i + 1) + ".png"));
+            goldNuggetCards.add(new GoldCard(CardInfo.goldNuggetCount(i), "img/gold" + (i + 1) + ".png"));
         }
 
         return goldNuggetCards;
@@ -123,22 +105,24 @@ public class Main {
 
     private static ArrayList<Player> initializePlayers(ArrayList<BoardCard> cards) {
         ArrayList<Player> players = new ArrayList<>();
-        Integer numOfSaboteurs = CardInfo.saboteurCount.get(numOfPlayers);
-        Integer numOfMiners = CardInfo.minerCount.get(numOfPlayers);
+        Integer numOfSaboteurs = CardInfo.saboteurCount.get(5);
+        Integer numOfMiners = CardInfo.minerCount.get(5);
 
-        for (int i = 0; i < numOfPlayers; i++) {
+        for (int i = 0; i < 5; i++) {
             Boolean isSaboteur = isPlayerSaboteur(numOfSaboteurs, numOfMiners);
             if (isSaboteur) {
                 numOfSaboteurs--;
             } else {
                 numOfMiners--;
             }
-
-            players.add(new Human(
-                    gameController,
-                    isSaboteur,
-                    getRandomCards(cards, CardInfo.numOfCards.get(numOfPlayers))));
+            if (i < numOfPlayers) {
+                players.add(new Human(gameController, isSaboteur, getRandomCards(cards, CardInfo.numOfCards.get(5))));
+            } else {
+                players.add(new Computer(gameController, isSaboteur, getRandomCards(cards, CardInfo.numOfCards.get(5))));
+            }
         }
+        Collections.shuffle(players.subList(1, players.size()));
+
         return players;
     }
 

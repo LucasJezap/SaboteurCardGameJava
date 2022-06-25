@@ -114,10 +114,6 @@ public class CardInfo {
             return 3;
     }
 
-    public static Boolean isPathBlocked(int i) {
-        return List.of(5, 6, 7, 10, 11, 12, 13, 14).contains(i);
-    }
-
     public static Boolean isPathStarting(int i) {
         return i == 0;
     }

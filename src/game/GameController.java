@@ -1,14 +1,14 @@
 package game;
 
-import card.ActionType;
-import card.BoardCard;
-import card.PathCard;
-import player.Move;
+import card.*;
+import player.Computer;
 import player.Player;
 import swing.Frame;
+import swing.ImagePanel;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GameController {
     protected GameState gameState;
@@ -18,8 +18,16 @@ public class GameController {
     public GameController() {
     }
 
+    public Frame getF() {
+        return f;
+    }
+
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
+    }
+
+    public GameState getGameState() {
+        return gameState;
     }
 
     public void initializeBoard() throws IOException {
@@ -30,20 +38,38 @@ public class GameController {
         JOptionPane.showMessageDialog(f.getF(),
                 """
                         Welcome to Saboteur game!
-                        This version has two limitations:
+                        This version has three limitations:
                         1. There's only one round
                         2. You can't rotate cards
+                        3. Blocking path cards don't block
                         Have fun!""");
     }
 
     public void changePlayer() throws IOException {
         currentPlayer = (currentPlayer + 1) % gameState.players.size();
         f.nextPlayer(gameState.players.get(currentPlayer), currentPlayer + 1);
+        if (gameState.players.get(currentPlayer).getClass().equals(Computer.class)) {
+            doComputerMove();
+            changePlayer();
+        }
     }
 
-    public Boolean isMoveValid(Move move) {
-        return true;
+    private void doComputerMove() throws IOException {
+        Computer computer = (Computer) gameState.players.get(currentPlayer);
+        BoardCard card = computer.useRandomCard(isPlayerBlocked());
+        String message;
+        if (card == null) {
+            message = "Computer can't make a move!";
+        } else if (card.getType() == CardType.ACTION) {
+            message = Computer.playActionCard(this, (ActionCard) card);
+            addNewCardToPlayer(card);
+        } else {
+            message = Computer.playPathCard(this, (PathCard) card);
+            addNewCardToPlayer(card);
+        }
+        JOptionPane.showMessageDialog(f.getF(), "Computer has made a move!\n" + message);
     }
+
 
     public void changePlayerBlock(ActionType type, int index) {
         if (type.toString().contains("_BLOCK")) {
@@ -77,16 +103,16 @@ public class GameController {
     }
 
     public void areCardsFinished() {
-        boolean endOfCards = true;
+        boolean endOfGame = true;
         for (Player player : gameState.players) {
             for (BoardCard card : player.getCards()) {
-                if (card != null) {
-                    endOfCards = false;
+                if (card != null && Computer.isCardValid(this, card, player.getIsBlocked().containsValue(true))) {
+                    endOfGame = false;
                     break;
                 }
             }
         }
-        if (endOfCards) {
+        if (endOfGame) {
             endGame("Saboteurs won!");
         }
     }
@@ -102,5 +128,36 @@ public class GameController {
 
     public boolean isPlayerSaboteur() {
         return gameState.players.get(currentPlayer).getSaboteur();
+    }
+
+    public boolean panelContainsCard(String name) {
+        ImagePanel panel = (ImagePanel) f.getPanels().get(name);
+        if (panel.getCard() != null) {
+            PathCard pathCard = (PathCard) panel.getCard();
+            return !(pathCard.getStart() || pathCard.getGold());
+        }
+
+        return false;
+    }
+
+    public ArrayList<PathCard> getPanelNeighbours(int row, int col) {
+        ArrayList<PathCard> cards = new ArrayList<>();
+        int[] rows = {0, 1, -1, 0};
+        int[] cols = {-1, 0, 0, 1};
+        for (int i = 0; i < 4; i++) {
+            String name = "card_" + (row + rows[i]) + "_" + (col + cols[i]);
+            ImagePanel panel = (ImagePanel) f.getPanels().get(name);
+            if (panel != null && panel.getCard() != null) {
+                PathCard pathCard = (PathCard) panel.getCard();
+                if (!pathCard.getGold()) {
+                    cards.add(pathCard);
+                } else {
+                    cards.add(null);
+                }
+            } else {
+                cards.add(null);
+            }
+        }
+        return cards;
     }
 }

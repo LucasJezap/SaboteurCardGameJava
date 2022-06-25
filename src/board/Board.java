@@ -20,8 +20,4 @@ public class Board {
     public Integer getHeight() {
         return height;
     }
-
-    public ArrayList<ArrayList<Cell>> getCells() {
-        return cells;
-    }
 }

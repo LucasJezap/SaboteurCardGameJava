@@ -229,7 +229,7 @@ public class Frame {
         putTextOnBoard("Select a card");
     }
 
-    private void changePanelImage(String name, String path) throws IOException {
+    public void changePanelImage(String name, String path) throws IOException {
         ImagePanel p = (ImagePanel) panels.get(name);
         p.setImage(ImageIO.read(new File(path)));
         f.getContentPane().repaint();
@@ -248,6 +248,10 @@ public class Frame {
 
     public void setSelectedPanel(ImagePanel selectedPanel) {
         this.selectedPanel = selectedPanel;
+    }
+
+    public Map<String, JPanel> getPanels() {
+        return panels;
     }
 
     public JFrame getF() {
@@ -318,11 +322,6 @@ public class Frame {
     }
 
     private boolean doesCardNotFit(PathCard card1, PathCard card2, Direction d1, Direction d2, int row, int column) {
-        System.out.println(row);
-        System.out.println(column);
-        System.out.println(d1);
-        System.out.println(d2);
-        System.out.println();
         if ((column == 1 && d2 == Direction.LEFT) || (column == 9 && d2 == Direction.RIGHT) ||
                 (row == 1 && d2 == Direction.UP) || (row == 5 && d2 == Direction.DOWN)) {
             return false;
@@ -331,8 +330,6 @@ public class Frame {
         if (card1 == null || card1.getGold()) {
             return false;
         }
-        System.out.println("RETURNING TRUE");
-        System.out.println();
 
         return !((!card1.hasRoad(d1) && !card2.hasRoad(d2))
                 || (card1.hasRoad(d1) && card2.hasRoad(d2)));

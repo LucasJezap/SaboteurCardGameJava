@@ -2,8 +2,6 @@ package game;
 
 import board.Board;
 import card.BoardCard;
-import player.Move;
-import player.MoveType;
 import player.Player;
 
 import java.util.ArrayList;
@@ -37,32 +35,15 @@ public class GameState {
         return nextCard;
     }
 
-    // TODO
-    public void processMove(Move move) {
-        MoveType actionType = move.getMoveType();
-        if (actionType == MoveType.DISCARD) {
-            System.out.println("DISCARD - do nothing for now");
-        } else if (actionType == MoveType.ACTION) {
-            System.out.println("ACTION - do something to other player");
-        } else {
-            System.out.println(actionType + " - do something on board");
-        }
-    }
-
-    // TODO
-    protected Boolean isRoundFinished() {
-        return new Random().nextInt(5) < 1;
-    }
-
-    // TODO
-    protected void finishRound() {
-    }
-
-    // TODO
-    protected void finishGame() {
-    }
-
     public ArrayList<BoardCard> getCards() {
         return cards;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
     }
 }

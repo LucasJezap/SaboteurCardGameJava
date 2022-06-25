@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70c48675-83f4-4ee1-9198-497f43cc40e4" name="Changes" comment="added adding new card to player's board&#10;todo: end round/game + computer movement">
+    <list default="true" id="70c48675-83f4-4ee1-9198-497f43cc40e4" name="Changes" comment="nearly finished, add computer logic, target card shuffling and checking if saboteurs won">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/board/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/card/ActionCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/ActionCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/card/GoldCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/GoldCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/card/PathCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/PathCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/misc/CardInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/misc/CardInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/Computer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/Human.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/Move.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/MoveType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/swing/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Frame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/ImagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/ImagePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656096947169</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="nearly finished, add computer logic, target card shuffling and checking if saboteurs won">
+      <created>1656103448212</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1656103448212</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -174,6 +189,7 @@
     <MESSAGE value="added are you saboteur" />
     <MESSAGE value="make sure special cards cannot be deleted with rockfall" />
     <MESSAGE value="added adding new card to player's board&#10;todo: end round/game + computer movement" />
-    <option name="LAST_COMMIT_MESSAGE" value="added adding new card to player's board&#10;todo: end round/game + computer movement" />
+    <MESSAGE value="nearly finished, add computer logic, target card shuffling and checking if saboteurs won" />
+    <option name="LAST_COMMIT_MESSAGE" value="nearly finished, add computer logic, target card shuffling and checking if saboteurs won" />
   </component>
 </project>

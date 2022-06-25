@@ -42,10 +42,4 @@ public abstract class Player {
     public Map<ActionType, Boolean> getIsBlocked() {
         return isBlocked;
     }
-
-    // this should let the player decide their move (and also check if it's valid)
-    // this should NOT move anything on board
-    // it should delete the card from hand
-    // it returns the move
-    public abstract Move play();
 }
